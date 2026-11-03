@@ -3,11 +3,12 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const db = require('./data');
+const { createStore, HttpError } = require('./src/store');
 
 const PORT = process.env.PORT || 8080;
 const PUBLIC = path.join(__dirname, 'public');
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml' };
+const store = createStore();
 
 function send(res, code, body) {
   const json = typeof body !== 'string';
@@ -23,87 +24,30 @@ function readBody(req) {
   });
 }
 
-// Per-punkt-signoff: Åpen/Delvis/Mangler -> Utført (Venter QA) -> OK. Uten QA-rolle går punktet rett til OK.
-function applyAction(item, action, body) {
-  const who = String(body.user || 'ukjent').slice(0, 60);
-  const now = new Date().toISOString();
-  if (action === 'done') {
-    if (item.status === 'g' || item.status === 'n') return 'Punktet er allerede ferdig';
-    item.signedBy = who; item.signedAt = now;
-    if (item.qa) { item.status = 'q'; item.detail = 'Utført av ' + who + ', venter på QA'; }
-    else { item.status = 'g'; item.detail = 'Signert av ' + who; }
-    return null;
-  }
-  if (action === 'approve') {
-    if (item.status !== 'q') return 'Punktet venter ikke på QA';
-    item.status = 'g'; item.qaBy = who; item.qaAt = now; item.detail = 'QA godkjent av ' + who;
-    return null;
-  }
-  if (action === 'reject') {
-    if (item.status !== 'q') return 'Punktet venter ikke på QA';
-    const comment = String(body.comment || '').trim();
-    if (!comment) return 'Kommentar er påkrevd ved avvisning';
-    item.status = 'o'; item.detail = 'Avvist av ' + who + ': ' + comment.slice(0, 300);
-    return null;
-  }
-  return 'Ukjent handling';
-}
-
-function rollup(list) {
-  const relevant = list.filter((i) => i.status !== 'n');
-  if (relevant.some((i) => i.status === 'r')) return 'r';
-  if (relevant.some((i) => ['y', 'q'].includes(i.status))) return 'y';
-  if (relevant.some((i) => i.status === 'o')) return 'o';
-  return 'g';
-}
-
-function counts(list) {
-  const c = {};
-  list.forEach((i) => { c[i.status] = (c[i.status] || 0) + 1; });
-  return c;
-}
-
+// Ingen ekte innlogging i v1: rollen kommer fra rollevelgeren i UI-et (header X-Role).
 async function api(req, res, url) {
-  const parts = url.pathname.split('/').filter(Boolean).slice(1); // etter "api"
-  if (req.method === 'GET' && parts[0] === 'health') return send(res, 200, { ok: true });
-  if (req.method === 'GET' && parts[0] === 'customer') {
-    const locs = db.locations.map((l) => {
-      const o = { ...l };
-      if (db.items[l.code]) o.hap = rollup(db.items[l.code]);
-      if (db.sat[l.code]) o.sat = rollup(db.sat[l.code]);
-      return o;
-    });
-    return send(res, 200, { labels: db.LABELS, customer: db.customer, locations: locs });
+  const p = url.pathname.split('/').filter(Boolean).slice(1);
+  const role = req.headers['x-role'] || 'tekniker';
+  const m = req.method;
+  const body = m === 'GET' ? {} : await readBody(req);
+
+  if (m === 'GET' && p[0] === 'health') return send(res, 200, { ok: true });
+  if (m === 'GET' && p[0] === 'meta') return send(res, 200, store.meta());
+  if (m === 'PUT' && p[0] === 'config') return send(res, 200, store.setConfig(body));
+
+  if (p[0] === 'customer') {
+    if (m === 'GET' && !p[1]) return send(res, 200, store.customerView(role));
+    if (m === 'PUT' && p[1] === 'profile') return send(res, 200, store.setProfile('customer', null, body, role));
+    if (m === 'POST' && p[1] === 'items' && p[2] && p[3]) return send(res, 200, store.itemAction('customer', null, p[2], p[3], role, body));
   }
-  if (parts[0] === 'locations' && parts[1]) {
-    const code = parts[1];
-    const loc = db.locations.find((l) => l.code === code);
-    if (!loc) return send(res, 404, { error: 'Fant ikke lokasjonen' });
-    const items = db.items[code] || [];
-    const sat = db.sat[code] || [];
-    if (req.method === 'GET' && !parts[2]) {
-      return send(res, 200, {
-        labels: db.LABELS, customer: db.customer.name, customerCode: db.customer.code,
-        location: { ...loc, hap: items.length ? rollup(items) : loc.hap, sat: sat.length ? rollup(sat) : loc.sat },
-        items, itemCounts: counts(items), sat, satCounts: counts(sat),
-        profile: db.profiles[code] || [], followups: db.followups[code] || []
-      });
-    }
-    if (req.method === 'POST' && parts[2] === 'items' && parts[3] && parts[4]) {
-      const item = items.find((i) => i.id === parts[3]);
-      if (!item) return send(res, 404, { error: 'Fant ikke punktet' });
-      const err = applyAction(item, parts[4], await readBody(req));
-      return err ? send(res, 400, { error: err }) : send(res, 200, item);
-    }
-    if (req.method === 'POST' && parts[2] === 'followups') {
-      const b = await readBody(req);
-      const text = String(b.text || '').trim();
-      if (!text) return send(res, 400, { error: 'Tekst mangler' });
-      const list = (db.followups[code] = db.followups[code] || []);
-      const fu = { id: Date.now(), text: text.slice(0, 300), owner: String(b.owner || '').slice(0, 60), due: String(b.due || '').slice(0, 20) };
-      list.push(fu);
-      return send(res, 201, fu);
-    }
+  if (p[0] === 'locations' && p[1]) {
+    const code = p[1];
+    if (m === 'GET' && !p[2]) return send(res, 200, store.locationView(code, role));
+    if (m === 'PUT' && p[2] === 'profile') return send(res, 200, store.setProfile('location', code, body, role));
+    if (m === 'POST' && p[2] === 'items' && p[3] && p[4]) return send(res, 200, store.itemAction('location', code, p[3], p[4], role, body));
+    if (m === 'POST' && p[2] === 'auto-check') return send(res, 200, (await store.runAutoChecks(code, role)).view);
+    if (m === 'POST' && p[2] === 'followups') return send(res, 201, store.addFollowup(code, body, role));
+    if (m === 'DELETE' && p[2] === 'followups' && p[3]) return send(res, 200, store.removeFollowup(code, p[3], role));
   }
   return send(res, 404, { error: 'Ukjent adresse' });
 }
@@ -120,6 +64,8 @@ http.createServer(async (req, res) => {
       res.end(buf);
     });
   } catch (e) {
+    if (e instanceof HttpError) return send(res, e.code, { error: e.message });
+    console.error(e);
     send(res, 500, { error: 'Noe gikk galt' });
   }
 }).listen(PORT, () => console.log('Lytter på port ' + PORT));

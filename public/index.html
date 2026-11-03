@@ -8,14 +8,17 @@
 </head>
 <body>
 <header class="top">
-  <div class="brand"><div class="logo">it</div><strong>Network Manager</strong><span class="badge">Internal</span></div>
-  <div class="top-r"><span class="muted">Jobber som</span>
-    <select id="role"><option>Tekniker</option><option>PM</option><option>WAN-ansvarlig</option></select></div>
+  <div class="brand"><div class="logo">it</div><strong>Network Manager</strong><span class="badge">Internal</span><span class="badge proto">Prototype</span></div>
+  <div class="top-r">
+    <span id="lights" class="lights"></span>
+    <label class="muted">Rolle <select id="role"></select></label>
+  </div>
 </header>
 <div class="layout">
   <nav class="side">
-    <a href="#/">Dokumentasjon</a>
-    <span class="muted small">Kunde og lokasjoner</span>
+    <span class="nav-i">Home</span><span class="nav-i">Inventory</span><span class="nav-i">WAN Circuits</span>
+    <span class="nav-i">Topology</span><span class="nav-i">Locations</span>
+    <a class="nav-i on" href="#/">Dokumentasjon <span class="tag">NY</span></a>
   </nav>
   <main id="app">Laster …</main>
 </div>

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<title>Detalj: SAT og signoff</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:Inter,system-ui,sans-serif}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+.g{background:#0f3a26;color:#86efac}.g .dot{background:#4ade80}
+.y{background:#47360a;color:#fde68a}.y .dot{background:#fbbf24}
+.r{background:#4a1a1f;color:#fecaca}.r .dot{background:#f87171}
+.n{background:#243349;color:#cbd5e1}.n .dot{background:#94a3b8}
+.o{background:transparent;color:#e6edf7;border:1px dashed #6b7f9f}.o .dot{background:transparent;border:2px solid #e6edf7;box-sizing:border-box}
+.card{background:#12213a;border:1px solid #1d2f4d;border-radius:12px;display:flex;flex-direction:column;min-width:0}
+.ch{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:14px 16px;border-bottom:1px solid #1d2f4d;font-weight:600;font-size:14px}
+.new{outline:2px dashed #4de6d4;outline-offset:3px;border-radius:8px}
+.tag{background:#4de6d4;color:#06231f;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;letter-spacing:.04em}
+.muted{color:#93a4bf}
+.nav{padding:9px 14px;border-radius:8px;color:#c3cfe2;display:flex;align-items:center;gap:10px;font-size:14px}
+.nav i{width:6px;height:6px;border-radius:50%;background:#4de6d4;display:inline-block;opacity:.7}
+.srow{display:grid;grid-template-columns:70px minmax(200px,1.3fr) minmax(150px,1fr) minmax(190px,1.2fr) 120px 110px;gap:12px;align-items:center;padding:11px 16px;border-top:1px solid #1d2f4d}
+.field{background:#0b1628;border:1px solid #2a4468;border-radius:6px;padding:7px 10px;font-size:13px;min-height:18px}
+.field.empty{border-style:dashed;color:#93a4bf}
+.btn{border:1px solid #2a4468;border-radius:8px;padding:9px 14px;font-weight:600;font-size:13px;background:transparent;color:#e6edf7;font-family:inherit}
+.btn.primary{background:#4de6d4;color:#06231f;border-color:#4de6d4}
+.step{display:flex;flex-direction:column;gap:6px;align-items:flex-start;flex:1 1 120px;min-width:100px}
+</style>
+</helmet>
+<div style="min-height:1360px;background:#0b1628;color:#e6edf7;font-size:14px;display:flex;flex-direction:column">
+
+<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:10px 24px;min-height:36px;background:#0e1c30;border-bottom:1px solid #1d2f4d">
+<div style="display:flex;align-items:center;gap:10px">
+<div style="width:28px;height:28px;border-radius:8px;background:#7c5cff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px">it</div>
+<strong style="font-size:15px">Network Manager</strong>
+<span style="background:#1d2f4d;padding:3px 8px;border-radius:6px;font-size:12px">Internal</span>
+</div>
+<div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+<span class="muted">(EK) Eksempel Kunde AS ▾</span>
+<span class="muted">(0D) Oslo | Hovedkontor ▾</span>
+<span class="new" style="display:flex;align-items:center;gap:8px;padding:2px 6px"><span class="pill r"><span class="dot"></span>Dok</span><span class="pill y"><span class="dot"></span>Test</span></span>
+</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;flex:1">
+<div style="flex:0 0 230px;background:#0e1c30;border-right:1px solid #1d2f4d;padding:16px 10px;box-sizing:border-box">
+<div class="nav">Home</div>
+<div class="nav">Inventory</div>
+<div class="nav">WAN Circuits</div>
+<div class="nav">Topology</div>
+<div class="nav">Wireless Clients</div>
+<div class="nav"><i></i>Access</div>
+<div class="nav"><i></i>Locations</div>
+<div class="nav"><i></i>IP</div>
+<div class="nav"><i></i>Site to Site</div>
+<div class="nav"><i></i>Articles</div>
+<div class="nav">NPC</div>
+<div class="nav" style="background:#10304a;color:#e6edf7;font-weight:600;margin:6px 0"><i></i>Dokumentasjon</div>
+<div class="nav">Feedback</div>
+</div>
+
+<div style="flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px">
+<div class="muted" style="font-size:13px">Home / Locations / EK-0D / Dokumentasjon / Test (SAT)</div>
+<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px">
+<div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+<h1 style="margin:0;font-size:26px;font-weight:700">Site Acceptance Test · Oslo | Hovedkontor</h1>
+<span class="pill y"><span class="dot"></span>Gul</span>
+</div>
+<div style="display:flex;gap:10px"><button class="btn">Eksporter PDF</button><button class="btn primary">Marker SAT gjennomført</button></div>
+</div>
+
+<!-- Testprofil -->
+<div class="card new">
+<div class="ch"><div style="display:flex;gap:10px;align-items:center">Testprofil for lokasjonen <span class="tag">NY</span></div><span class="muted" style="font-size:12px;font-weight:500">Utledet fra inventar, nett og WAN. Irrelevante rader blir grå automatisk.</span></div>
+<div style="padding:14px 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px">
+<sc-for list="{{profile}}" as="p" hint-placeholder-count="8">
+<div style="background:#0e1c30;border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><strong style="font-size:13px">{{p.name}}</strong><span class="pill {{p.cls}}"><span class="dot"></span>{{p.label}}</span></div>
+<div class="muted" style="font-size:12px">{{p.source}}</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<!-- SAT-tabell -->
+<div class="card new">
+<div class="ch"><div style="display:flex;gap:10px;align-items:center">Testpunkter <span class="tag">NY</span></div><span class="muted" style="font-size:12px;font-weight:500">6 OK · 1 delvis · 4 åpne · 1 ikke aktuell</span></div>
+<div style="overflow-x:auto">
+<div style="min-width:900px">
+<div class="srow" style="border-top:none;font-size:12px;color:#93a4bf;font-weight:600"><div>ID</div><div>Test</div><div>Forventet</div><div>Resultat</div><div>Status</div><div>Vurdering</div></div>
+<sc-for list="{{sat}}" as="s" hint-placeholder-count="12">
+<div class="srow">
+<div class="muted" style="font-size:12px;font-weight:600">{{s.id}}</div>
+<div style="font-weight:500">{{s.test}}</div>
+<div class="muted" style="font-size:13px">{{s.expected}}</div>
+<div class="field {{s.fcls}}">{{s.result}}</div>
+<div><span class="pill {{s.cls}}"><span class="dot"></span>{{s.label}}</span></div>
+<div class="muted" style="font-size:12px">{{s.how}}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:20px">
+<!-- Signoff-flyt -->
+<div class="card new" style="flex:1 1 460px">
+<div class="ch"><div style="display:flex;gap:10px;align-items:center">Signoff-flyt per punkt <span class="tag">NY</span></div><span class="muted" style="font-size:12px;font-weight:500">Eksempel: LOK-05 Bilder</span></div>
+<div style="padding:18px 16px;display:flex;gap:10px;flex-wrap:wrap">
+<div class="step"><span class="pill o"><span class="dot"></span>Åpen</span><span class="muted" style="font-size:12px">Ikke utført</span></div>
+<div class="step"><span class="pill y"><span class="dot"></span>Utført</span><span class="muted" style="font-size:12px">Tekniker har markert ferdig</span></div>
+<div class="step"><span class="pill y"><span class="dot"></span>Venter QA</span><span class="muted" style="font-size:12px">PM kontrollerer</span></div>
+<div class="step"><span class="pill g"><span class="dot"></span>OK</span><span class="muted" style="font-size:12px">QA godkjent</span></div>
+</div>
+<div style="padding:0 16px 16px;display:flex;flex-direction:column;gap:12px">
+<div style="background:#0e1c30;border-radius:8px;padding:12px;font-size:13px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><span><strong>LOK-05</strong> · Bilder lastet opp og merket i ROT</span><span class="muted">Ansvarlig: tekniker · QA: PM</span></div>
+<div class="field empty" style="min-height:44px">Kommentar (påkrevd ved avvisning)</div>
+<div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn primary">Godkjenn (QA)</button><button class="btn">Avvis med kommentar</button></div>
+<div class="muted" style="font-size:12px">Punkter uten QA-rolle går rett fra Utført til OK. Hvem som signerte og når lagres på punktet.</div>
+</div>
+</div>
+
+<!-- Oppfølgingspunkter -->
+<div class="card new" style="flex:1 1 460px">
+<div class="ch"><div style="display:flex;gap:10px;align-items:center">Oppfølgingspunkter <span class="tag">NY</span></div><span class="muted" style="font-size:12px;font-weight:500">Samme liste som «utestående punkter» i HAP</span></div>
+<div style="overflow-x:auto">
+<div style="min-width:440px">
+<div style="display:grid;grid-template-columns:minmax(160px,1.4fr) 120px 90px;gap:12px;padding:11px 16px;font-size:12px;color:#93a4bf;font-weight:600"><div>Punkt</div><div>Ansvarlig</div><div>Frist</div></div>
+<div style="display:grid;grid-template-columns:minmax(160px,1.4fr) 120px 90px;gap:12px;padding:11px 16px;border-top:1px solid #1d2f4d;font-size:13px;align-items:center"><div>Avklar og dokumenter backuplinje</div><div>[PM]</div><div class="muted">[dato]</div></div>
+<div style="display:grid;grid-template-columns:minmax(160px,1.4fr) 120px 90px;gap:12px;padding:11px 16px;border-top:1px solid #1d2f4d;font-size:13px;align-items:center"><div>Test dot1x og XWLAN etter fredag kveld</div><div>[Tekniker]</div><div class="muted">[dato]</div></div>
+<div style="display:grid;grid-template-columns:minmax(160px,1.4fr) 120px 90px;gap:12px;padding:11px 16px;border-top:1px solid #1d2f4d;font-size:13px;align-items:center"><div>Dokumenter VLAN 5 som avvik fra standard</div><div>[Tekniker]</div><div class="muted">[dato]</div></div>
+<div style="padding:12px 16px;border-top:1px solid #1d2f4d"><button class="btn">+ Legg til punkt</button></div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1360}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      profile: [
+        { name: 'Wi-Fi / XWLAN', cls: 'g', label: 'Aktiv', source: 'SSID-widget: EK-XWLAN finnes' },
+        { name: 'dot1x', cls: 'g', label: 'Aktiv', source: 'SSID med Client Authentication' },
+        { name: 'Print', cls: 'g', label: 'Aktiv', source: 'Workplace Assets: 2 printere' },
+        { name: 'AV-teknisk', cls: 'n', label: 'Ikke aktiv', source: 'Ingen AV-enheter i inventar' },
+        { name: 'Backuplinje', cls: 'y', label: 'Uavklart', source: 'Backup-linknet finnes, 1 WAN-linje' },
+        { name: 'WAN over 200 Mbps (HSEC)', cls: 'n', label: 'Nei', source: 'WAN Circuits og SAT-05' },
+        { name: 'Meraki', cls: 'o', label: 'Åpen', source: 'Må bekreftes av tekniker' },
+        { name: 'Shared location', cls: 'n', label: 'Nei', source: 'Lokasjonsnavn uten «Shared location»' }
+      ],
+      sat: [
+        { id: 'SAT-01', test: 'Bilde av skap før nedrigg', expected: 'Minst 1 bilde merket «før»', result: '2 bilder, ingen merket «før»', fcls: '', cls: 'y', label: 'Delvis', how: 'Automatisk' },
+        { id: 'SAT-03', test: 'Ruter, switcher og AP på nett', expected: '11 enheter', result: '11 av 11 online', fcls: '', cls: 'g', label: 'OK', how: 'Automatisk' },
+        { id: 'SAT-04', test: 'Kjernesystemer og kritiske SaaS-apper testet', expected: 'Liste fra kunde', result: 'Alle testet', fcls: '', cls: 'g', label: 'OK', how: 'Tekniker' },
+        { id: 'SAT-05', test: 'WAN primær, bandbredde', expected: 'Bestilt hastighet [Mbps]', result: '[Mbps] målt', fcls: '', cls: 'g', label: 'OK', how: 'Automatisk mot bestilt' },
+        { id: 'SAT-06', test: 'WAN sekundær, bandbredde', expected: 'Gjelder hvis backuplinje', result: 'Ikke målt', fcls: 'empty', cls: 'o', label: 'Åpen', how: 'Avventer avklaring' },
+        { id: 'SAT-07', test: 'Failover (trekk primærlinje)', expected: 'Trafikk over backup', result: 'Ikke testet', fcls: 'empty', cls: 'o', label: 'Åpen', how: 'Avventer avklaring' },
+        { id: 'SAT-08', test: 'LAN via kabel: IP, DNS og VLAN', expected: 'VLAN 2', result: 'IP i prod-nettet, VLAN 2, DNS OK', fcls: '', cls: 'g', label: 'OK', how: 'Tekniker' },
+        { id: 'SAT-09', test: 'Wi-Fi produksjon: IP, DNS og VLAN', expected: 'VLAN 2 og 3', result: 'VLAN 2 OK · VLAN 3 OK', fcls: '', cls: 'g', label: 'OK', how: 'Tekniker' },
+        { id: 'SAT-10', test: 'XWLAN-enhet i VLAN 6', expected: 'VLAN 6', result: 'Kan testes fredag kveld', fcls: 'empty', cls: 'o', label: 'Åpen', how: 'Tekniker' },
+        { id: 'SAT-11', test: 'dot1x negativ test', expected: 'Klient i VLAN 3', result: 'Kan testes fredag kveld', fcls: 'empty', cls: 'o', label: 'Åpen', how: 'Tekniker' },
+        { id: 'SAT-12', test: 'Printere online, IP i VLAN 8', expected: '2 printere', result: '2 av 2 online', fcls: '', cls: 'g', label: 'OK', how: 'Tekniker' },
+        { id: 'SAT-13', test: 'AV-utstyr online', expected: 'Gjelder hvis AV-teknisk', result: 'Ikke aktuell', fcls: 'empty', cls: 'n', label: 'Ikke aktuell', how: 'Fra testprofil' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

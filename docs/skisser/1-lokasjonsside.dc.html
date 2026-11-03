@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<title>Lokasjonsside med dokumentasjonsstatus</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:Inter,system-ui,sans-serif}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+.g{background:#0f3a26;color:#86efac}.g .dot{background:#4ade80}
+.y{background:#47360a;color:#fde68a}.y .dot{background:#fbbf24}
+.r{background:#4a1a1f;color:#fecaca}.r .dot{background:#f87171}
+.n{background:#243349;color:#cbd5e1}.n .dot{background:#94a3b8}
+.o{background:transparent;color:#e6edf7;border:1px dashed #6b7f9f}.o .dot{background:transparent;border:2px solid #e6edf7;box-sizing:border-box}
+.card{background:#12213a;border:1px solid #1d2f4d;border-radius:12px;display:flex;flex-direction:column;min-width:0}
+.ch{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:14px 16px;border-bottom:1px solid #1d2f4d;font-weight:600;font-size:14px}
+.ch span.c{color:#93a4bf;font-weight:500;margin-left:6px}
+.cf{display:flex;align-items:center;gap:10px;padding:10px 16px;border-top:1px solid #1d2f4d;font-size:12px;color:#93a4bf;margin-top:auto;flex-wrap:wrap}
+.new{outline:2px dashed #4de6d4;outline-offset:3px;border-radius:8px}
+.tag{background:#4de6d4;color:#06231f;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;letter-spacing:.04em}
+.row{display:grid;grid-template-columns:76px minmax(220px,1fr) 128px 190px 130px;gap:12px;align-items:center;padding:12px 16px;border-top:1px solid #1d2f4d}
+.muted{color:#93a4bf}
+.nav{padding:9px 14px;border-radius:8px;color:#c3cfe2;display:flex;align-items:center;gap:10px;font-size:14px}
+.nav i{width:6px;height:6px;border-radius:50%;background:#4de6d4;display:inline-block;opacity:.7}
+</style>
+</helmet>
+<div style="min-height:1780px;background:#0b1628;color:#e6edf7;font-size:14px;display:flex;flex-direction:column">
+
+<!-- Topplinje -->
+<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:10px 24px;min-height:36px;background:#0e1c30;border-bottom:1px solid #1d2f4d">
+<div style="display:flex;align-items:center;gap:10px">
+<div style="width:28px;height:28px;border-radius:8px;background:#7c5cff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px">it</div>
+<strong style="font-size:15px">Network Manager</strong>
+<span style="background:#1d2f4d;padding:3px 8px;border-radius:6px;font-size:12px">Internal</span>
+</div>
+<div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+<span class="muted">(EK) Eksempel Kunde AS ▾</span>
+<span class="muted">(0D) Eksempel Kunde AS - Oslo | Hovedkontor ▾</span>
+<span class="new" style="display:flex;align-items:center;gap:8px;padding:2px 6px"><span class="pill r"><span class="dot"></span>Dok</span><span class="pill y"><span class="dot"></span>Test</span><span class="tag">NY</span></span>
+</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;flex:1">
+<!-- Sidemeny -->
+<div style="flex:0 0 230px;background:#0e1c30;border-right:1px solid #1d2f4d;padding:16px 10px;box-sizing:border-box">
+<div class="nav">Home</div>
+<div class="nav">Inventory</div>
+<div class="nav">WAN Circuits</div>
+<div class="nav">Topology</div>
+<div class="nav">Wireless Clients</div>
+<div class="nav"><i></i>Access</div>
+<div class="nav"><i></i>Locations</div>
+<div class="nav"><i></i>IP</div>
+<div class="nav"><i></i>Site to Site</div>
+<div class="nav"><i></i>Articles</div>
+<div class="nav">NPC</div>
+<div class="nav new" style="background:#10304a;color:#e6edf7;font-weight:600;margin:6px 0"><i></i>Dokumentasjon <span class="tag" style="margin-left:auto">NY</span></div>
+<div class="nav">Feedback</div>
+</div>
+
+<!-- Innhold -->
+<div style="flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px">
+<div class="muted" style="font-size:13px">Home / Locations / EK-0D</div>
+
+<!-- Tittelrad -->
+<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px">
+<div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+<div style="width:40px;height:40px;border-radius:50%;background:#7c5cff;display:flex;align-items:center;justify-content:center">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+</div>
+<h1 style="margin:0;font-size:26px;font-weight:700">Eksempel Kunde AS - Oslo | Hovedkontor</h1>
+<span style="background:#0f3a26;color:#86efac;padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600">Managed</span>
+</div>
+<div style="display:flex;gap:10px;flex-wrap:wrap">
+<span style="border:1px solid #2a4468;border-radius:8px;padding:9px 16px;font-weight:600">ROT ↗</span>
+<span style="border:1px solid #2a4468;border-radius:8px;padding:9px 16px;font-weight:600">Company Service ↗</span>
+<span style="border:1px solid #2a4468;border-radius:8px;padding:9px 16px;font-weight:600">NetBox ↗</span>
+</div>
+</div>
+
+<!-- NY: Dokumentasjonsstatus -->
+<div class="card new" style="margin:4px 0">
+<div class="ch">
+<div style="display:flex;align-items:center;gap:10px">Dokumentasjonsstatus <span class="tag">NY</span></div>
+<div class="muted" style="font-weight:500;font-size:13px">Fase: <strong style="color:#e6edf7">Under utrulling</strong></div>
+</div>
+<div style="display:flex;flex-wrap:wrap">
+<!-- Sammendrag -->
+<div style="flex:0 0 300px;padding:18px 16px;display:flex;flex-direction:column;gap:14px;border-right:1px solid #1d2f4d;box-sizing:border-box">
+<div style="background:#0e1c30;border-radius:10px;padding:14px">
+<div class="muted" style="font-size:12px;margin-bottom:6px">DOK · Handover-protokoll (HAP)</div>
+<span class="pill r" style="font-size:14px"><span class="dot"></span>Rød</span>
+<div style="margin-top:8px;font-size:13px">1 rød · 3 gule · 1 åpen<br><span class="muted">11 OK · 1 ikke aktuell</span></div>
+</div>
+<div style="background:#0e1c30;border-radius:10px;padding:14px">
+<div class="muted" style="font-size:12px;margin-bottom:6px">TEST · Site Acceptance Test (SAT)</div>
+<span class="pill y" style="font-size:14px"><span class="dot"></span>Gul</span>
+<div style="margin-top:8px;font-size:13px">6 av 12 OK · 1 delvis · 4 åpne<br><span class="muted">1 ikke aktuell</span></div>
+</div>
+<div style="font-size:13px;display:flex;align-items:flex-start;gap:8px"><span class="pill r"><span class="dot"></span>Blokkerer handover</span></div>
+<div class="muted" style="font-size:12px">1 rødt punkt må løses før handover kan godkjennes.</div>
+</div>
+<!-- Punktliste -->
+<div style="flex:999 1 640px;min-width:0;overflow-x:auto">
+<div style="min-width:760px">
+<div class="row" style="border-top:none;font-size:12px;color:#93a4bf;font-weight:600;padding-top:14px;padding-bottom:8px">
+<div>ID</div><div>Punkt</div><div>Status</div><div>Ansvarlig → QA</div><div>Kilde</div>
+</div>
+<sc-for list="{{items}}" as="item" hint-placeholder-count="9">
+<div class="row">
+<div class="muted" style="font-size:12px;font-weight:600">{{item.id}}</div>
+<div><div style="font-weight:500">{{item.title}}</div><div class="muted" style="font-size:12px;margin-top:2px">{{item.detail}}</div></div>
+<div><span class="pill {{item.cls}}"><span class="dot"></span>{{item.label}}</span></div>
+<div style="font-size:13px">{{item.who}}</div>
+<div class="muted" style="font-size:12px">{{item.src}}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+<div class="cf"><span>Vis: <strong style="color:#e6edf7">Alle</strong> · Mine punkter · QA-kø</span><span style="margin-left:auto">Vis alle 29 punkter →</span></div>
+</div>
+
+<!-- Widgetgrid -->
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px">
+
+<div class="card" style="min-height:360px">
+<div class="ch">General Information</div>
+<div style="padding:14px 16px;display:flex;flex-direction:column;gap:12px">
+<div style="height:170px;border-radius:8px;background:linear-gradient(135deg,#1b2f4a,#16304f);position:relative;display:flex;align-items:center;justify-content:center">
+<svg width="34" height="34" viewBox="0 0 24 24" fill="#7c5cff" stroke="#fff" stroke-width="1.5" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5" fill="#fff"/></svg>
+</div>
+<div style="display:flex;justify-content:space-between;font-size:13px"><strong>Address</strong><span class="muted">Eksempelveien 1, 0000 Oslo</span></div>
+</div>
+<div class="cf new" style="margin:12px 16px 14px;border:none;border-radius:8px;background:#0e1c30"><span class="pill g"><span class="dot"></span>OK</span><span>LOK-04 · state i Company Service</span></div>
+</div>
+
+<div class="card" style="min-height:360px">
+<div class="ch"><div>Images<span class="c">(2)</span></div></div>
+<div style="padding:14px 16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+<div style="height:76px;border-radius:6px;background:#2b3d57;display:flex;align-items:center;justify-content:center;font-size:11px;color:#c3cfe2">Skap</div>
+<div style="height:76px;border-radius:6px;background:#1f4a5e;display:flex;align-items:center;justify-content:center;font-size:11px;color:#c3cfe2">Patchepanel</div>
+<div style="height:76px;border-radius:6px;border:1px dashed #2a4468"></div>
+<div style="height:76px;border-radius:6px;border:1px dashed #2a4468"></div>
+<div style="height:76px;border-radius:6px;border:1px dashed #2a4468"></div>
+<div style="height:76px;border-radius:6px;border:1px dashed #2a4468"></div>
+</div>
+<div class="cf new" style="margin:12px 16px 14px;border:none;border-radius:8px;background:#0e1c30"><span class="pill y"><span class="dot"></span>Delvis</span><span>LOK-05 · skap før nedrigg mangler (SAT-01)</span></div>
+</div>
+
+<div class="card" style="min-height:360px">
+<div class="ch"><div>Floor Plans</div></div>
+<div style="padding:14px 16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+<div style="height:110px;border-radius:6px;background:#e6edf7;display:flex;align-items:center;justify-content:center;font-size:11px;color:#334155">Plantegning</div>
+<div style="height:110px;border-radius:6px;border:1px dashed #2a4468"></div>
+<div style="height:110px;border-radius:6px;border:1px dashed #2a4468"></div>
+</div>
+<div class="cf new" style="margin:12px 16px 14px;border:none;border-radius:8px;background:#0e1c30"><span class="pill y"><span class="dot"></span>Delvis</span><span>5 av 7 AP navngitt på plantegning</span></div>
+</div>
+
+<div class="card" style="min-height:330px">
+<div class="ch"><div>WAN Circuits</div></div>
+<div style="padding:18px 16px;display:flex;align-items:center;gap:24px;justify-content:center;flex-wrap:wrap">
+<div style="width:130px;height:130px;border-radius:50%;background:conic-gradient(#4ade80 0 100%);display:flex;align-items:center;justify-content:center"><div style="width:98px;height:98px;border-radius:50%;background:#12213a;display:flex;flex-direction:column;align-items:center;justify-content:center"><span class="muted" style="font-size:11px">Total</span><strong style="font-size:26px">1</strong></div></div>
+<div style="font-size:13px;line-height:1.9"><span class="dot" style="background:#4ade80"></span> Up <span class="muted">1</span><br><span class="dot" style="background:#f87171"></span> Down <span class="muted">0</span><br><span class="dot" style="background:#94a3b8"></span> Unknown <span class="muted">0</span></div>
+</div>
+<div class="cf new" style="margin:0 16px 14px;border:none;border-radius:8px;background:#0e1c30"><span class="pill y"><span class="dot"></span>Delvis</span><span>LOK-07 · backup-linknet finnes, ingen backuplinje</span></div>
+</div>
+
+<div class="card" style="min-height:330px">
+<div class="ch"><div>Network Assets</div></div>
+<div style="padding:18px 16px;display:flex;align-items:center;gap:24px;justify-content:center;flex-wrap:wrap">
+<div style="width:130px;height:130px;border-radius:50%;background:conic-gradient(#4de6d4 0 63.6%,#a78bfa 63.6% 81.8%,#f472b6 81.8% 100%);display:flex;align-items:center;justify-content:center"><div style="width:98px;height:98px;border-radius:50%;background:#12213a;display:flex;flex-direction:column;align-items:center;justify-content:center"><span class="muted" style="font-size:11px">Total</span><strong style="font-size:26px">11</strong></div></div>
+<div style="font-size:13px;line-height:1.9"><span class="dot" style="background:#4de6d4"></span> Access Points <span class="muted">7</span><br><span class="dot" style="background:#a78bfa"></span> Routers <span class="muted">2</span><br><span class="dot" style="background:#f472b6"></span> Switches <span class="muted">2</span><br><span class="dot" style="background:#fbbf24"></span> Firewalls <span class="muted">0</span></div>
+</div>
+<div class="cf new" style="margin:0 16px 14px;border:none;border-radius:8px;background:#0e1c30"><span class="pill r"><span class="dot"></span>Mangler</span><span>LOK-02 · 2 av 11 enheter uten overvåkning</span></div>
+</div>
+
+<div class="card" style="min-height:330px">
+<div class="ch"><div>Workplace Assets ↗</div></div>
+<div style="padding:18px 16px;display:flex;align-items:center;gap:24px;justify-content:center;flex-wrap:wrap">
+<div style="width:130px;height:130px;border-radius:50%;background:conic-gradient(#4de6d4 0 20%,#a78bfa 20% 90%,#f472b6 90% 100%);display:flex;align-items:center;justify-content:center"><div style="width:98px;height:98px;border-radius:50%;background:#12213a;display:flex;flex-direction:column;align-items:center;justify-content:center"><span class="muted" style="font-size:11px">Total</span><strong style="font-size:26px">10</strong></div></div>
+<div style="font-size:13px;line-height:1.9"><span class="dot" style="background:#4de6d4"></span> Printers <span class="muted">2</span><br><span class="dot" style="background:#a78bfa"></span> Meeting Rooms <span class="muted">7</span><br><span class="dot" style="background:#f472b6"></span> Signage <span class="muted">1</span></div>
+</div>
+<div class="cf new" style="margin:0 16px 14px;border:none;border-radius:8px;background:#0e1c30"><span class="pill o"><span class="dot"></span>Åpen</span><span>Printere finnes → SAT-12 og VLAN 8 er relevante</span></div>
+</div>
+
+<div class="card" style="min-height:330px">
+<div class="ch"><div>SSID<span class="c">(3)</span></div></div>
+<div style="padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+<div style="border:1px solid #1d2f4d;border-radius:8px;padding:10px 12px;display:flex;justify-content:space-between"><div><strong>EK-AV</strong><div class="muted" style="font-size:12px">Pre-Shared Key · Broadcasted</div></div><span style="text-decoration:underline;font-size:12px">Show password</span></div>
+<div style="border:1px solid #1d2f4d;border-radius:8px;padding:10px 12px;display:flex;justify-content:space-between"><div><strong>EK-GUEST</strong><div class="muted" style="font-size:12px">Pre-Shared Key · Broadcasted</div></div><span style="text-decoration:underline;font-size:12px">Show password</span></div>
+<div style="border:1px solid #1d2f4d;border-radius:8px;padding:10px 12px"><strong>EK-XWLAN</strong><div class="muted" style="font-size:12px">Client Authentication · Broadcasted</div></div>
+</div>
+<div class="cf new" style="margin:0 16px 14px;border:none;border-radius:8px;background:#0e1c30"><span class="pill g"><span class="dot"></span>OK</span><span>Wi-Fi dokumentert · SAT-09 og SAT-10 relevante</span></div>
+</div>
+
+<div class="card" style="min-height:330px">
+<div class="ch"><div>Networks<span class="c">(21)</span></div></div>
+<div style="padding:4px 16px;font-size:13px">
+<div style="display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #1d2f4d"><span style="text-decoration:underline">10.10.64.32/27</span><span class="muted">technical · VLAN 7</span></div>
+<div style="display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #1d2f4d"><span style="text-decoration:underline">10.10.225.0/24</span><span class="muted">prod · VLAN 2</span></div>
+<div style="display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #1d2f4d"><span style="text-decoration:underline">10.10.65.0/24</span><span class="muted">prod · VLAN 2</span></div>
+<div style="display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #1d2f4d;align-items:center"><span style="text-decoration:underline">10.10.66.0/24</span><span style="display:flex;gap:8px;align-items:center"><span class="pill y"><span class="dot"></span>Avvik</span><span class="muted">prod · VLAN 5</span></span></div>
+<div style="display:flex;justify-content:space-between;gap:12px;padding:9px 0"><span style="text-decoration:underline">10.10.4.184/30</span><span class="muted">linknet · VLAN 1300</span></div>
+</div>
+<div class="cf new" style="margin:auto 16px 14px;border:none;border-radius:8px;background:#0e1c30"><span class="pill y"><span class="dot"></span>Delvis</span><span>LOK-16 · VLAN 5 er ikke standard-VLAN, avvik ikke dokumentert</span></div>
+</div>
+
+<div class="card" style="min-height:330px">
+<div class="ch"><div>Service Cards<span class="c">(3)</span> ↗</div></div>
+<div style="padding:4px 16px;font-size:13px">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid #1d2f4d"><span style="text-decoration:underline">EK-0D - Managed LAN</span><span class="pill g"><span class="dot"></span>Active</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid #1d2f4d"><span style="text-decoration:underline">EK-0D - Managed Network</span><span class="pill g"><span class="dot"></span>Active</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0"><span style="text-decoration:underline">EK-0D - Managed WIFI</span><span class="pill g"><span class="dot"></span>Active</span></div>
+</div>
+<div class="cf new" style="margin:auto 16px 14px;border:none;border-radius:8px;background:#0e1c30"><span class="pill g"><span class="dot"></span>OK</span><span>LOK-09 og LOK-10 · service cards og billing company</span></div>
+</div>
+
+<div class="card" style="min-height:240px">
+<div class="ch"><div>Tickets<span class="c">(0)</span> ↗</div></div>
+<div class="muted" style="padding:40px 16px;text-align:center">No tickets found</div>
+</div>
+
+<div class="card new" style="min-height:240px">
+<div class="ch"><div style="display:flex;gap:10px;align-items:center">Processes<span class="c" style="margin-left:0">(1)</span> ↗ <span class="tag">ENDRET</span></div></div>
+<div style="padding:12px 16px;display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><span style="font-weight:500">Change i Operations Manager</span><span class="pill n"><span class="dot"></span>Endring pågår</span></div>
+<div class="muted" style="font-size:12px">[Change-ID] · alarmer mutet på berørt utstyr · husk å avslutte Change</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1780}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      items: [
+        { id: 'LOK-02', title: 'Utstyr i overvåkning (Orion/DNAC)', detail: '2 av 11 enheter mangler', cls: 'r', label: 'Mangler', who: 'Tekniker', src: 'Automatisk' },
+        { id: 'LOK-13', title: 'Sec Policy aktiv og fungerer', detail: 'Venter på signoff fra tekniker', cls: 'o', label: 'Åpen', who: 'Tekniker', src: 'Manuell · signoff' },
+        { id: 'LOK-05', title: 'Bilder lastet opp og merket i ROT', detail: 'Utført av tekniker, venter på QA', cls: 'y', label: 'Venter QA', who: 'Tekniker → PM', src: 'Auto + manuell QA' },
+        { id: 'LOK-07', title: 'Linjer dokumentert (inkl. backup)', detail: 'Backup-linknet (VLAN 1301) uten linje', cls: 'y', label: 'Delvis', who: 'WAN-ansvarlig → PM', src: 'Manuell' },
+        { id: 'LOK-16', title: 'Avvik fra standard dokumentert', detail: 'VLAN 5 er ikke standard-VLAN', cls: 'y', label: 'Delvis', who: 'Tekniker → PM', src: 'Manuell' },
+        { id: 'LOK-12', title: 'HSEC-lisens aktivert', detail: 'Gjelder kun WAN > 200 Mbps', cls: 'n', label: 'Ikke aktuell', who: 'Tekniker', src: 'Automatisk · betinget' },
+        { id: 'LOK-10', title: 'Service cards og billing company i NPC', detail: '3 aktive service cards', cls: 'g', label: 'OK', who: 'PM', src: 'Automatisk' },
+        { id: 'SAT-07', title: 'Failover (trekk primærlinje)', detail: 'Betinget: backuplinje', cls: 'o', label: 'Åpen', who: 'Tekniker', src: 'Manuelt resultat' },
+        { id: 'SAT-11', title: 'dot1x negativ test, klient i VLAN 3', detail: 'Kan ikke testes før fredag kveld', cls: 'o', label: 'Åpen', who: 'Tekniker', src: 'Manuelt resultat' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

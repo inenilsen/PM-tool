@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<title>Kundeoversikt med dokumentasjonsstatus</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:Inter,system-ui,sans-serif}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+.g{background:#0f3a26;color:#86efac}.g .dot{background:#4ade80}
+.y{background:#47360a;color:#fde68a}.y .dot{background:#fbbf24}
+.r{background:#4a1a1f;color:#fecaca}.r .dot{background:#f87171}
+.n{background:#243349;color:#cbd5e1}.n .dot{background:#94a3b8}
+.o{background:transparent;color:#e6edf7;border:1px dashed #6b7f9f}.o .dot{background:transparent;border:2px solid #e6edf7;box-sizing:border-box}
+.card{background:#12213a;border:1px solid #1d2f4d;border-radius:12px;display:flex;flex-direction:column;min-width:0}
+.ch{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:14px 16px;border-bottom:1px solid #1d2f4d;font-weight:600;font-size:14px}
+.new{outline:2px dashed #4de6d4;outline-offset:3px;border-radius:8px}
+.tag{background:#4de6d4;color:#06231f;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;letter-spacing:.04em}
+.muted{color:#93a4bf}
+.nav{padding:9px 14px;border-radius:8px;color:#c3cfe2;display:flex;align-items:center;gap:10px;font-size:14px}
+.nav i{width:6px;height:6px;border-radius:50%;background:#4de6d4;display:inline-block;opacity:.7}
+.lrow{display:grid;grid-template-columns:minmax(200px,1.4fr) 190px 120px 120px minmax(150px,1fr);gap:12px;align-items:center;padding:12px 16px;border-top:1px solid #1d2f4d}
+.krow{display:grid;grid-template-columns:70px minmax(180px,1fr) 124px;gap:12px;align-items:center;padding:11px 16px;border-top:1px solid #1d2f4d}
+.chip{border:1px solid #2a4468;border-radius:999px;padding:6px 14px;font-size:13px;color:#c3cfe2}
+</style>
+</helmet>
+<div style="min-height:1500px;background:#0b1628;color:#e6edf7;font-size:14px;display:flex;flex-direction:column">
+
+<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:10px 24px;min-height:36px;background:#0e1c30;border-bottom:1px solid #1d2f4d">
+<div style="display:flex;align-items:center;gap:10px">
+<div style="width:28px;height:28px;border-radius:8px;background:#7c5cff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px">it</div>
+<strong style="font-size:15px">Network Manager</strong>
+<span style="background:#1d2f4d;padding:3px 8px;border-radius:6px;font-size:12px">Internal</span>
+</div>
+<div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+<span class="muted">(EK) Eksempel Kunde AS ▾</span>
+<span class="new" style="display:flex;align-items:center;gap:8px;padding:2px 6px"><span class="pill y"><span class="dot"></span>Dok</span><span class="pill g"><span class="dot"></span>Test</span><span class="tag">NY</span></span>
+</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;flex:1">
+<div style="flex:0 0 230px;background:#0e1c30;border-right:1px solid #1d2f4d;padding:16px 10px;box-sizing:border-box">
+<div class="nav">Home</div>
+<div class="nav">Inventory</div>
+<div class="nav">WAN Circuits</div>
+<div class="nav">Topology</div>
+<div class="nav">Wireless Clients</div>
+<div class="nav"><i></i>Access</div>
+<div class="nav" style="background:#16294a;color:#e6edf7;font-weight:600"><i></i>Locations</div>
+<div class="nav"><i></i>IP</div>
+<div class="nav"><i></i>Site to Site</div>
+<div class="nav"><i></i>Articles</div>
+<div class="nav">NPC</div>
+<div class="nav new" style="background:#10304a;color:#e6edf7;font-weight:600;margin:6px 0"><i></i>Dokumentasjon <span class="tag" style="margin-left:auto">NY</span></div>
+<div class="nav">Feedback</div>
+</div>
+
+<div style="flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px">
+<div class="muted" style="font-size:13px">Home / Dokumentasjon / EK</div>
+<div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+<h1 style="margin:0;font-size:26px;font-weight:700">Eksempel Kunde AS [EK]</h1>
+<span class="muted">14 lokasjoner</span>
+</div>
+
+<!-- Aggregerte lys -->
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px" class="new">
+<div class="card" style="padding:16px;gap:10px">
+<div class="muted" style="font-size:12px">KUNDE · Dok (HAP)</div>
+<div><span class="pill y" style="font-size:14px"><span class="dot"></span>Gul</span></div>
+<div class="muted" style="font-size:13px">Kundenivå: 4 av 7 punkter OK</div>
+</div>
+<div class="card" style="padding:16px;gap:10px">
+<div class="muted" style="font-size:12px">KUNDE · Test (SAT)</div>
+<div><span class="pill g" style="font-size:14px"><span class="dot"></span>Grønn</span></div>
+<div class="muted" style="font-size:13px">Alle ferdigstilte lokasjoner har bestått</div>
+</div>
+<div class="card" style="padding:16px;gap:10px;grid-column:span 1">
+<div class="muted" style="font-size:12px">LOKASJONER · Dok-status</div>
+<div style="font-size:20px;font-weight:700">5 av 14 <span class="muted" style="font-size:13px;font-weight:500">grønne</span></div>
+<div style="display:flex;height:12px;border-radius:6px;overflow:hidden;gap:2px" role="img" aria-label="5 grønne, 3 gule, 2 røde, 4 åpne">
+<div style="flex:5;background:#4ade80"></div><div style="flex:3;background:#fbbf24"></div><div style="flex:2;background:#f87171"></div><div style="flex:4;background:#2a4468"></div>
+</div>
+<div class="muted" style="font-size:12px">5 OK · 3 delvis · 2 mangler · 4 ikke startet</div>
+</div>
+<div class="card" style="padding:16px;gap:10px">
+<div class="muted" style="font-size:12px">HANDOVER</div>
+<div><span class="pill r" style="font-size:14px"><span class="dot"></span>2 blokkert</span></div>
+<div class="muted" style="font-size:13px">Røde punkter hindrer godkjenning</div>
+</div>
+</div>
+
+<!-- Kundenivå + implementasjonsmatrise -->
+<div style="display:flex;flex-wrap:wrap;gap:20px">
+<div class="card new" style="flex:1 1 440px">
+<div class="ch"><div style="display:flex;gap:10px;align-items:center">Kundenivå (overordnet) <span class="tag">NY</span></div><span class="muted" style="font-size:12px;font-weight:500">KUN-01 til KUN-07</span></div>
+<sc-for list="{{kun}}" as="k" hint-placeholder-count="7">
+<div class="krow">
+<div class="muted" style="font-size:12px;font-weight:600">{{k.id}}</div>
+<div><div style="font-weight:500">{{k.title}}</div><div class="muted" style="font-size:12px;margin-top:2px">{{k.detail}}</div></div>
+<div><span class="pill {{k.cls}}"><span class="dot"></span>{{k.label}}</span></div>
+</div>
+</sc-for>
+</div>
+
+<div class="card new" style="flex:1 1 440px">
+<div class="ch"><div style="display:flex;gap:10px;align-items:center">Implementasjoner <span class="tag">NY</span></div><span class="muted" style="font-size:12px;font-weight:500">CMDB + lenke i kundepublish</span></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:#1d2f4d">
+<sc-for list="{{impl}}" as="m" hint-placeholder-count="10">
+<div style="background:#12213a;padding:12px 16px;display:flex;flex-direction:column;gap:6px">
+<div style="font-weight:500;font-size:13px">{{m.name}}</div>
+<div><span class="pill {{m.cls}}"><span class="dot"></span>{{m.label}}</span></div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+
+<!-- Lokasjonstabell -->
+<div class="card new">
+<div class="ch"><div style="display:flex;gap:10px;align-items:center">Lokasjoner <span class="tag">ENDRET</span></div><span class="muted" style="font-size:12px;font-weight:500">Viser 7 av 14</span></div>
+<div style="padding:12px 16px;display:flex;gap:8px;flex-wrap:wrap">
+<span class="chip" style="background:#16294a;color:#e6edf7;font-weight:600">Alle</span>
+<span class="chip">Røde</span>
+<span class="chip">Venter QA</span>
+<span class="chip">Blokkerer handover</span>
+<span class="chip">Mine lokasjoner</span>
+</div>
+<div style="overflow-x:auto">
+<div style="min-width:820px">
+<div class="lrow" style="border-top:1px solid #1d2f4d;font-size:12px;color:#93a4bf;font-weight:600"><div>Lokasjon</div><div>Fase</div><div>Test (SAT)</div><div>Dok (HAP)</div><div>Handover</div></div>
+<sc-for list="{{locs}}" as="l" hint-placeholder-count="7">
+<div class="lrow">
+<div style="font-weight:500">{{l.name}}</div>
+<div style="font-size:13px">{{l.phase}}</div>
+<div><span class="pill {{l.tcls}}"><span class="dot"></span>{{l.tlabel}}</span></div>
+<div><span class="pill {{l.dcls}}"><span class="dot"></span>{{l.dlabel}}</span></div>
+<div class="muted" style="font-size:13px">{{l.handover}}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      kun: [
+        { id: 'KUN-01', title: 'Kundepublish «Nettverksoppsett | Kundenavn [Kundekode]»', detail: 'Finnes og lenker til implementasjoner', cls: 'g', label: 'OK' },
+        { id: 'KUN-02', title: 'Alle tjenester dokumentert, implementasjon per tjeneste', detail: '2 tjenester uten implementasjon i CMDB', cls: 'y', label: 'Delvis' },
+        { id: 'KUN-03', title: 'HLD ved komplekse systemer', detail: 'Ingen komplekse systemer registrert', cls: 'n', label: 'Ikke aktuell' },
+        { id: 'KUN-04', title: 'Fakturagrunnlag oppdatert (NPC)', detail: 'QA godkjent av PM', cls: 'g', label: 'OK' },
+        { id: 'KUN-05', title: 'Kontaktmatrise, ansvarsfordeling og kritiske tjenester', detail: 'Manuell bekreftelse av PM', cls: 'g', label: 'OK' },
+        { id: 'KUN-06', title: 'Intern informasjon sendt (e-post / allmøte)', detail: 'Etter go-live, PM ansvarlig', cls: 'o', label: 'Åpen' },
+        { id: 'KUN-07', title: 'HAP godkjent', detail: 'Låst til alle krav er OK eller gule med plan', cls: 'o', label: 'Åpen' }
+      ],
+      impl: [
+        { name: 'Tekniske nett', cls: 'g', label: 'Dokumentert' },
+        { name: 'Wi-Fi SSID', cls: 'g', label: 'Dokumentert' },
+        { name: 'Klient VPN', cls: 'n', label: 'Ikke aktuell' },
+        { name: 'VPN-tunnel', cls: 'y', label: 'Delvis' },
+        { name: 'PAT', cls: 'n', label: 'Ikke aktuell' },
+        { name: 'NAT', cls: 'g', label: 'Dokumentert' },
+        { name: 'User-ID', cls: 'r', label: 'Mangler' },
+        { name: 'Managed Local Firewall', cls: 'n', label: 'Ikke aktuell' },
+        { name: 'Azure', cls: 'n', label: 'Ikke aktuell' },
+        { name: 'Shared Network', cls: 'y', label: 'Delvis' }
+      ],
+      locs: [
+        { name: 'Oslo | Hovedkontor', phase: 'Under utrulling', tcls: 'y', tlabel: 'Gul', dcls: 'r', dlabel: 'Rød', handover: 'Blokkert (1 rødt punkt)' },
+        { name: 'Bergen | Kontor', phase: 'Operativ støtteperiode', tcls: 'g', tlabel: 'Grønn', dcls: 'y', dlabel: 'Gul', handover: 'Venter på QA' },
+        { name: 'Trondheim | Kontor', phase: 'Operativ støtteperiode', tcls: 'g', tlabel: 'Grønn', dcls: 'g', dlabel: 'Grønn', handover: 'Klar for godkjenning' },
+        { name: 'Stavanger | Kontor', phase: 'Under utrulling', tcls: 'o', tlabel: 'Åpen', dcls: 'o', dlabel: 'Åpen', handover: 'Ikke startet' },
+        { name: 'Tromsø | Kontor', phase: 'Planlagt', tcls: 'o', tlabel: 'Åpen', dcls: 'o', dlabel: 'Åpen', handover: 'Ikke startet' },
+        { name: 'Kristiansand | Kontor', phase: 'Drift', tcls: 'g', tlabel: 'Grønn', dcls: 'g', dlabel: 'Grønn', handover: 'Godkjent' },
+        { name: 'Drammen | Kontor', phase: 'Handover godkjent', tcls: 'g', tlabel: 'Grønn', dcls: 'g', dlabel: 'Grønn', handover: 'Godkjent' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
