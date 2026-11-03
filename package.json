@@ -1,0 +1,13 @@
+{
+  "name": "nettverksdok",
+  "version": "0.1.0",
+  "description": "Standardisering av nettverksdokumentasjon: status for HAP og SAT per kunde og lokasjon",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "22.x"
+  }
+}
